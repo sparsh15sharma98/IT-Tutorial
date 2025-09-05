@@ -1,0 +1,53 @@
+def fahrenheit_to_celsius(F):
+    C = (F - 32) * 5 / 9
+    return C
+temp_f = 77
+temp_c = fahrenheit_to_celsius(temp_f)
+print(f"{temp_f}°F is {temp_c:.2f}°C")
+
+
+
+def is_even(n):
+    return n % 2 == 0
+print(is_even(2))   # True
+print(is_even(5))   # False
+
+
+def triangle_area(b, h=1):
+    return 0.5 * b * h       
+print(triangle_area(10, 1))    
+
+# Function to get input values
+def get_mortgage_input():
+    annual_rate = float(input("Enter annual rate of interest (%): "))
+    monthly_payment = float(input("Enter monthly payment amount: "))
+    beginning_balance = float(input("Enter beginning of month balance: "))
+    return annual_rate, monthly_payment, beginning_balance
+
+# Function to calculate interest, principal reduction, and ending balance
+def calculate_mortgage_values(annual_rate, monthly_payment, beginning_balance):
+    monthly_rate = annual_rate / 12 / 100
+    interest_paid = beginning_balance * monthly_rate
+    principal_reduction = monthly_payment - interest_paid
+    ending_balance = beginning_balance - principal_reduction
+    return interest_paid, principal_reduction, ending_balance
+
+# Function to display the results
+def display_mortgage_summary(interest_paid, principal_reduction, ending_balance):
+    print(f"\nMortgage Summary for the Month:")
+    print(f"Interest Paid: ${interest_paid:,.2f}")
+    print(f"Reduction of Principal: ${principal_reduction:,.2f}")
+    print(f"End of Month Balance: ${ending_balance:,.2f}")
+
+# Main function to orchestrate the flow
+def main():
+    annual_rate, monthly_payment, beginning_balance = get_mortgage_input()
+    interest_paid, principal_reduction, ending_balance = calculate_mortgage_values(
+        annual_rate, monthly_payment, beginning_balance
+    )
+    display_mortgage_summary(interest_paid, principal_reduction, ending_balance)
+
+# Run the program
+if __name__ == "__main__":
+    main()
+
